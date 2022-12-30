@@ -1,2 +1,4 @@
 # flutterapp
-This is a basic flutter app
+ Simple Flutter Application that shows the implementation of login mechanism & some db magic!
+ 
+ 
