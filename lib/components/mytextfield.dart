@@ -9,7 +9,7 @@ class MyTextfield extends StatelessWidget {
 
   MyTextfield(
   {
-    this.controller,
+    required this.controller,
     required this.labeltext,
     required this.obsecuretext,
 }
@@ -24,11 +24,11 @@ class MyTextfield extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labeltext,
           hintStyle:  TextStyle(color: Colors.grey),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade400),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white ,)
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+            borderSide: BorderSide(color:Colors.grey.shade400),
           ),
           fillColor: Colors.grey.shade200,
           filled: true,
