@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/pages/auth.dart';
+import 'package:dropshop/pages/auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -19,14 +25,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Ahsan Ali',
             style: TextStyle(color: Colors.black, fontSize: 15),
           ),
           elevation: 0,
           backgroundColor: Colors.white,
           leading: Container(
-            padding: EdgeInsets.only(left: 10, top: 0, right: 5, bottom: 0),
+            padding: const EdgeInsets.only(left: 10, top: 0, right: 5, bottom: 0),
             child: CircleAvatar(
               backgroundColor: Colors.grey[400],
               radius: 20,
@@ -39,8 +45,8 @@ class _MyAppState extends State<MyApp> {
           ),
           actions: [
             Container(
-              padding: EdgeInsets.only(right: 10, bottom: 3),
-              child: Icon(
+              padding: const EdgeInsets.only(right: 10, bottom: 3),
+              child: const Icon(
                 Icons.shopping_cart_rounded,
                 color: Colors.red,
                 size: 25,
@@ -54,10 +60,10 @@ class _MyAppState extends State<MyApp> {
               child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(
                   decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
+                      enabledBorder: const OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.grey,
                         ),
@@ -72,16 +78,62 @@ class _MyAppState extends State<MyApp> {
               ),
 
               Container(
-                // need a
+                //************** i'll change it to carousal slider soon 😊
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   border: Border.all(color: Colors.black),
                 ),
                 height: 180,
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                child:Image.network('https://docs.flutter.dev/assets/images/docs/development/ui/splash-screen/android-splash-screen/splash-screens_header.png',fit: BoxFit.fill,),),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                child: Image.network(
+                  //'https://docs.flutter.dev/assets/images/docs/development/ui/splash-screen/android-splash-screen/splash-screens_header.png',
+                  'lib/assets/slider.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
+
+              Container( padding: const EdgeInsets.only(left: 15, top: 20, right: 5, bottom: 0),
+                child: Row(
+                  children:  [
 
 
+                      const CircleAvatar(
+                        backgroundColor: Colors.redAccent,
+                        radius: 30,
+                        child: Icon(
+                          Icons.category_rounded,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                      ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 10, top: 0, right: 5, bottom: 0),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey[400],
+                        radius: 30,
+                        child: Icon(
+                          Icons.image,
+                          color: Colors.grey[100],
+                          size: 35,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 10, top: 0, right: 5, bottom: 0),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey[400],
+                        radius: 30,
+                        child: Icon(
+                          Icons.image,
+                          color: Colors.grey[100],
+                          size: 35,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           )),
         ),
