@@ -4,7 +4,12 @@
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+so, im currently at this stage
+![Model](https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673167100.png)
+
+
+
+---------------------------------------------
 
 A few resources to get you started if this is your first Flutter project:
 
