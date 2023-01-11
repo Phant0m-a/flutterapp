@@ -9,11 +9,11 @@ so, im currently at this stage
 
 
 # Login
-![Model](https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673287280)
+![Model](https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673287280.png)
 
 
 # Signup
-![Model]https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673287278.png)
+![Model](https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673287278.png)
 
 
 
