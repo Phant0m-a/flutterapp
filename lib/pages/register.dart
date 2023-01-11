@@ -8,18 +8,20 @@ import 'package:dropshop/components/tilebox.dart';
 import 'package:dropshop/components/mybutton.dart';
 import 'package:dropshop/pages/home.dart';
 
-class Login extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function()? onTap;
-  Login({Key? key,required this.onTap}) : super(key: key);
+  Register({Key? key, required this.onTap}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
 //controllers
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmpasswordController =
+      TextEditingController();
 
   void wrongMessage(String message) {
     showDialog(
@@ -38,7 +40,7 @@ class _LoginState extends State<Login> {
   }
 
 //signin user
-  void signInUser() async {
+  void signUpUser() async {
     //show loading circle ** make seprate method / components off it!
 
     showDialog(
@@ -53,15 +55,21 @@ class _LoginState extends State<Login> {
         });
 
     //lets try catch signin
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: usernameController.text.trim(),
-          password: passwordController.text.trim());
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-    } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
-      //wrong password
-      wrongMessage('Email or password incorrect');
+    if (passwordController.text.trim() ==
+        confirmpasswordController.text.trim()) {
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: usernameController.text.trim(),
+            password: passwordController.text.trim());
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      } on FirebaseAuthException catch (e) {
+        Navigator.pop(context);
+        //wrong password
+        wrongMessage('Email or password incorrect');
+      }
+    } else {
+      wrongMessage('Passwords dont match!');
     }
   }
 
@@ -81,7 +89,6 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-   
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.grey[300],
@@ -97,17 +104,17 @@ class _LoginState extends State<Login> {
 
                   //logo
                   Icon(
-                    Icons.ac_unit,
+                    Icons.lock,
                     size: 100,
                     color: Colors.black,
                   ),
                   SizedBox(
-                    height: 50,
+                    height:25,
                   ),
 
                   //welcome, you've been missed
                   Text(
-                    'Welcome Back you\'ve been missed!',
+                    'Create a new account!',
                     style: TextStyle(color: Colors.grey[700], fontSize: 16),
                   ),
 
@@ -126,34 +133,22 @@ class _LoginState extends State<Login> {
                     labeltext: 'Password',
                     controller: passwordController,
                   ),
-
-                  SizedBox(
-                    height: 15,
-                  ),
-
-                  //welcome, you've been missed
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          'Forgot Password?',
-                          style:
-                              TextStyle(color: Colors.grey[600], fontSize: 16),
-                        ),
-                      ],
-                    ),
+                  SizedBox(height: 15),
+                  //password textfield
+                  MyTextfield(
+                    obsecuretext: false,
+                    labeltext: 'Confirm Password',
+                    controller: confirmpasswordController,
                   ),
 
                   SizedBox(
                     height: 25,
                   ),
 
-                  MyButton(onTap: signInUser,),
+                  MyButton(onTap: signUpUser,),
 
                   SizedBox(
-                    height: 50,
+                    height: 40,
                   ),
 
                   Row(
@@ -203,7 +198,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Not a member?',
+                        'Already have an Account?',
                         style: TextStyle(color: Colors.grey[700]),
                       ),
                       SizedBox(
@@ -212,7 +207,7 @@ class _LoginState extends State<Login> {
                       GestureDetector(
                         onTap: widget.onTap,
                         child: Text(
-                          'Register now',
+                          'Login now',
                           style: TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
                         ),

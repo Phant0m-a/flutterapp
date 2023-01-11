@@ -1,3 +1,4 @@
+import 'package:dropshop/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:dropshop/pages/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -42,6 +43,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // return const Auth();
+    // return MaterialApp(home: Auth());
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -290,6 +293,7 @@ class _MyAppState extends State<MyApp> {
                       ],
                     )),
               ),
+
             ],
           )),
         ),
