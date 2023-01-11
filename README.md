@@ -8,6 +8,14 @@ so, im currently at this stage
 ![Model](https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673167100.png)
 
 
+# Login
+![Model](https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673287280)
+
+
+# Signup
+![Model]https://github.com/Phant0m-a/flutterapp/blob/main/Screenshot_1673287278.png)
+
+
 
 ---------------------------------------------
 
