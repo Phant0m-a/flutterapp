@@ -53,8 +53,9 @@ class _LoginState extends State<Login> {
         });
 
     //lets try catch signin
-    try {
+    try {      print(usernameController.text +' == '+ passwordController.text);
       await FirebaseAuth.instance.signInWithEmailAndPassword(
+  
           email: usernameController.text.trim(),
           password: passwordController.text.trim());
       Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));

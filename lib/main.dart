@@ -1,3 +1,4 @@
+import 'package:dropshop/components/testproduct_card.dart';
 import 'package:dropshop/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:dropshop/pages/auth.dart';
@@ -5,6 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../modals/product.dart';
+import '../components/product_card.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,11 +43,12 @@ class _MyAppState extends State<MyApp> {
   // When the current user is signed out.
   // When there is a change in the current user's token.
 
+  List productList = Product.ProductList;
   @override
   Widget build(BuildContext context) {
     // return const Auth();
     // return MaterialApp(home: Auth());
-
+    var wDefaultPadding = 10;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -294,6 +298,51 @@ class _MyAppState extends State<MyApp> {
                     )),
               ),
 
+              //...
+              Column(
+                children: [
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(
+                  //       vertical: wDefaultPadding.toDouble()),
+                  //   child: Image.asset(
+                  //     'lib/assets/slider.PNG',
+                  //     height: 200,
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Divider(
+                    thickness: 1,
+                    color: Colors.black,
+                  ),
+                  GridView.count(
+                    shrinkWrap: true,
+                    mainAxisSpacing: wDefaultPadding * 2,
+                    crossAxisSpacing: wDefaultPadding * 2,
+                    crossAxisCount: 3,
+                    children: List.generate(
+                      productList.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 2, horizontal: 2),
+                        child:
+
+                            //  ProductCard(
+                            //   cardItem: productList[index],
+                            // ),
+                            Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black)),
+                          height: 100,
+                          child: Center(child: Text('card')),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              //...
             ],
           )),
         ),
