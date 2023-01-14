@@ -18,11 +18,12 @@ so, im currently at this stage
 
 # Future goal:
   1. Forgot password
-  2. Home page
+  2. Home page 
   3. One tap Gmail signin
   4. One tap Apple signin
   5. Ui work
   6. refactoring
+  7. signout  ✅
 
 ---------------------------------------------
 
